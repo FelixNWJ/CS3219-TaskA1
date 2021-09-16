@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  webserver:
+    build:
+      context: ./app
+    container_name: webserver
+    hostname: webserver
+    ports:
+      - "8080:80"
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    hostname: nginx
+    ports:
+      - "80:80"
+    depends_on:
+      - webserver
